@@ -14,6 +14,7 @@
 #   User.new(name: 'Matheus', age: 22)
 #   => #<User:0x000055bac152f130 @name="Matheus", @age=22, @email="guest@user.com">
 module EzAttributes
+  # Gem version
   VERSION = '0.1.0'
 
   # Defines multiple keyword arguments for a class initializer
