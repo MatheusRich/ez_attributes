@@ -25,13 +25,13 @@ RSpec.describe EzAttributes do
     end
 
     it 'requires args' do
-      expect { single_arg_class.new }.to raise_error(ArgumentError, /missing keyword: :a/)
+      expect { single_arg_class.new }.to raise_error(ArgumentError, /missing keyword: :?a/)
     end
 
     it 'requires keyword args' do
       expect { single_arg_class.new(1) }.to raise_error(
         ArgumentError,
-        /wrong number of arguments \(given 1, expected 0; required keyword: a\)/
+        /wrong number of arguments \(given 1, expected 0; required keyword: :?a\)/
       )
     end
   end
@@ -59,7 +59,7 @@ RSpec.describe EzAttributes do
     end
 
     it 'requires args' do
-      expect { multiple_arg_class.new }.to raise_error(ArgumentError, /missing keywords: :a, :b/)
+      expect { multiple_arg_class.new }.to raise_error(ArgumentError, /missing keywords: :?a, :?b/)
     end
 
     it 'requires keyword args' do
@@ -80,7 +80,7 @@ RSpec.describe EzAttributes do
     end
 
     it 'only requires args without default values' do
-      expect { class_with_default_values.new }.to raise_error(ArgumentError, /missing keyword: :a/)
+      expect { class_with_default_values.new }.to raise_error(ArgumentError, /missing keyword: :?a/)
     end
 
     it 'adds the defaults to the constructor', :aggregate_failures do
