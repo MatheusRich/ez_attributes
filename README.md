@@ -22,7 +22,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+class User
+  extend EzAttributes
+
+  # Here name and age are required, and email has a default value, so it is optional.
+  attributes :name, :age, email: 'guest@user.com'
+end
+
+User.new(name: 'Matheus', age: 22)
+# => #<User:0x000055bac152f130 @name="Matheus", @age=22, @email="guest@user.com">
+```
 
 ## Development
 
@@ -32,8 +42,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/ez_attributes.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/MatheusRich/ez_attributes.
 
 ## License
 
