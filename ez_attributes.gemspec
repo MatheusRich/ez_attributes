@@ -6,15 +6,13 @@ Gem::Specification.new do |spec|
   spec.name          = 'ez_attributes'
   spec.version       = EzAttributes::VERSION
   spec.authors       = ['Matheus Richard']
-  spec.email         = ['matheus.richard@fretadao.com.br']
+  spec.email         = ['matheusrichardt@gmail.com']
 
   spec.summary       = 'Easily define initializers with keyword args.'
   spec.description   = 'Easily define initializers with keyword args. It supports required and optional args.'
   spec.homepage      = 'https://github.com/MatheusRich/ez_attributes.git'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.5.0')
-
-  spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = spec.homepage
