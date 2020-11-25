@@ -1,6 +1,18 @@
-# EzAttributes
+<p align="center">
+  <h1 align="center">EzAttributes</h1>
 
-Easily define initializers with keyword args. It supports required and optional args.
+  <p align="center">
+    <i>Easily define initializers with keyword args</i>
+    <br>
+    <br>
+    <img src="https://img.shields.io/gem/v/ez_attributes">
+    <img src="https://img.shields.io/gem/dt/ez_attributes">
+    <img src="https://github.com/MatheusRich/ez_attributes/workflows/Ruby/badge.svg">
+    <a href="https://github.com/MatheusRich/ez_attributes/blob/master/LICENSE">
+      <img src="https://img.shields.io/github/license/MatheusRich/ez_attributes.svg" alt="License">
+    </a>
+  </p>
+</p>
 
 ## Installation
 
