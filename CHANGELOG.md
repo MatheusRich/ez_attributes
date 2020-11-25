@@ -9,12 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- ### Added -->
 <!-- ### Changed -->
-<!-- ### Removed -->
----
+
+## <!-- ### Removed -->
 
 ## [0.1.0] - 2020-11-24
 
 ### Added
+
 - Basic module to define class initializers with keyword args.
 
 [unreleased]: https://github.com/MatheusRich/ez_attributes/compare/v0.1.0...HEAD
