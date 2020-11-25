@@ -32,6 +32,16 @@ Or install it yourself as:
 
 ## Usage
 
+The first step is to extend EzAttributes in your class.
+
+```ruby
+class User
+  extend EzAttributes
+end
+```
+
+Then, add the required and optional fields
+
 ```ruby
 class User
   extend EzAttributes
@@ -40,8 +50,12 @@ class User
   attributes :name, :age, email: 'guest@user.com'
 end
 
-User.new(name: 'Matheus', age: 22)
-# => #<User:0x000055bac152f130 @name="Matheus", @age=22, @email="guest@user.com">
+User.new(name: 'Matz', age: 22)
+# => #<User:0x000055bac152f130 @name="Matz", @age=22, @email="guest@user.com">
+
+# EzAttributes will add getters for all fields too.
+User.name
+# => "Matz"
 ```
 
 ## Development
