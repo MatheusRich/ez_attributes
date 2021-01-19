@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ez_attributes (0.1.0)
+    ez_attributes (0.2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -89,4 +89,4 @@ DEPENDENCIES
   yard
 
 BUNDLED WITH
-   2.1.4
+   2.2.6

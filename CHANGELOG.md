@@ -7,10 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
 <!-- ### Added -->
 <!-- ### Changed -->
+<!-- ### Removed -->
 
-## <!-- ### Removed -->
+## [0.2.0] - 2021-01-19
+
+### Added
+
+- Allow using reserved words as attributes.
+
+
+```ruby
+Class.new do
+  extend EzAttributes
+
+  # This would break in 0.1.0.
+  # Now it works.
+  attributes :class, :if
+end
+```
 
 ## [0.1.0] - 2020-11-24
 
