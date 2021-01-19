@@ -15,7 +15,7 @@
 #   => #<User:0x000055bac152f130 @name="Matheus", @age=22, @email="guest@user.com">
 module EzAttributes
   # Gem version
-  VERSION = '0.1.0'
+  VERSION = '0.2.0'
 
   # Defines multiple keyword arguments for a class initializer
   def attributes(*args, **args_with_default)
@@ -31,7 +31,7 @@ module EzAttributes
 
     class_eval <<~RUBY, __FILE__, __LINE__ + 1
       def initialize(#{init_args})
-        #{all_args.map { |name| "@#{name} = #{name}" }.join('; ')}
+        #{all_args.map { |name| "@#{name} = binding.local_variable_get(:#{name})" }.join('; ')}
       end
     RUBY
   end

@@ -91,4 +91,18 @@ RSpec.describe EzAttributes do
       expect(obj.c).to be_a Time
     end
   end
+
+  context "when arg names match ruby's reserved words" do
+    let(:class_with_default_values) do
+      Class.new do
+        extend EzAttributes
+
+        attributes :class, :if
+      end
+    end
+
+    it 'does not break' do
+      expect { class_with_default_values.new(class: Integer, if: true) }.not_to raise_error
+    end
+  end
 end
