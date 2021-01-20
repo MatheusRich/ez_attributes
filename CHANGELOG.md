@@ -7,17 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-
 <!-- ### Added -->
 <!-- ### Changed -->
 <!-- ### Removed -->
+
+## [0.2.1] - 2021-01-20
+
+### Changed
+
+- Do not generate getter for attribute named `class`. This prevents overriding the `Object#class` method.
 
 ## [0.2.0] - 2021-01-19
 
 ### Added
 
 - Allow using reserved words as attributes.
-
 
 ```ruby
 Class.new do
@@ -35,6 +39,7 @@ end
 
 - Basic module to define class initializers with keyword args.
 
-[unreleased]: https://github.com/MatheusRich/ez_attributes/compare/v0.2.0...HEAD
+[unreleased]: https://github.com/MatheusRich/ez_attributes/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/MatheusRich/ez_attributes/releases/tag/v0.2.1
 [0.2.0]: https://github.com/MatheusRich/ez_attributes/releases/tag/v0.2.0
 [0.1.0]: https://github.com/MatheusRich/ez_attributes/releases/tag/v0.2.0

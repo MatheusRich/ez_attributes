@@ -15,7 +15,7 @@
 #   => #<User:0x000055bac152f130 @name="Matheus", @age=22, @email="guest@user.com">
 module EzAttributes
   # Gem version
-  VERSION = '0.2.0'
+  VERSION = '0.2.1'
 
   # Attributes that won't have a getter to prevent conflicts with default methods
   EXCEPTIONS = [:class].freeze
