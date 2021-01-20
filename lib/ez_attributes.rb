@@ -17,6 +17,9 @@ module EzAttributes
   # Gem version
   VERSION = '0.2.0'
 
+  # Attributes that won't have a getter to prevent conflicts with default methods
+  EXCEPTIONS = [:class].freeze
+
   # Defines multiple keyword arguments for a class initializer
   def attributes(*args, **args_with_default)
     required_args = args.map { |name| "#{name}:" }
@@ -27,7 +30,7 @@ module EzAttributes
     private :__args_with_default
 
     all_args = args + args_with_default.keys
-    attr_reader(*all_args)
+    attr_reader(*(all_args - EXCEPTIONS))
 
     class_eval <<~RUBY, __FILE__, __LINE__ + 1
       def initialize(#{init_args})

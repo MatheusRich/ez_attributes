@@ -104,5 +104,11 @@ RSpec.describe EzAttributes do
     it 'does not break' do
       expect { class_with_default_values.new(class: Integer, if: true) }.not_to raise_error
     end
+
+    it 'does not add attr_reader for :class attribute', :aggregate_failures do
+      obj = class_with_default_values.new(class: Integer, if: true)
+      expect(obj.class).not_to eq Integer
+      expect(obj.if).to eq true
+    end
   end
 end
