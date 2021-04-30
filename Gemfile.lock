@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ez_attributes (0.2.1)
+    ez_attributes (0.2.2)
 
 GEM
   remote: https://rubygems.org/

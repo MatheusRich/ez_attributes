@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <!-- ### Changed -->
 <!-- ### Removed -->
 
+## [0.2.2] - 2021-04-30
+
+### Changed
+
+- Fix shared state between class instances. (Commit 759abc7cb971e6a30448f5e9557be4542128d7cf)
+
 ## [0.2.1] - 2021-01-20
 
 ### Changed
@@ -39,7 +45,8 @@ end
 
 - Basic module to define class initializers with keyword args.
 
-[unreleased]: https://github.com/MatheusRich/ez_attributes/compare/v0.2.1...HEAD
+[unreleased]: https://github.com/MatheusRich/ez_attributes/compare/v0.2.2...HEAD
+[0.2.2]: https://github.com/MatheusRich/ez_attributes/releases/tag/v0.2.2
 [0.2.1]: https://github.com/MatheusRich/ez_attributes/releases/tag/v0.2.1
 [0.2.0]: https://github.com/MatheusRich/ez_attributes/releases/tag/v0.2.0
 [0.1.0]: https://github.com/MatheusRich/ez_attributes/releases/tag/v0.2.0
