@@ -18,3 +18,5 @@ Metrics/AbcSize:
 Style/DocumentationMethod:
   Enabled: true
 
+RSpec/ExampleLength:
+  Max: 15

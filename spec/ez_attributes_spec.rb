@@ -111,4 +111,30 @@ RSpec.describe EzAttributes do
       expect(obj.if).to eq true
     end
   end
+
+  context 'when an instance mutates state' do
+    let(:test_class) do
+      Class.new do
+        extend EzAttributes
+
+        attributes a: []
+
+        def change_attr
+          a << 1
+        end
+      end
+    end
+
+    it 'does not share state with other instances', :aggregate_failures do
+      obj1 = test_class.new
+      obj1.change_attr
+      obj1.change_attr
+
+      obj2 = test_class.new
+      obj2.change_attr
+
+      expect(obj1.a).to eq [1, 1]
+      expect(obj2.a).to eq [1]
+    end
+  end
 end

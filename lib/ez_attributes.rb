@@ -26,7 +26,7 @@ module EzAttributes
     optional_args = args_with_default.map { |name, _| "#{name}: __args_with_default[:#{name}]" }
     init_args = (required_args + optional_args).join(', ')
 
-    define_method('__args_with_default', -> { args_with_default.dup })
+    define_method('__args_with_default', -> { Marshal.load(Marshal.dump(args_with_default)) })
     private :__args_with_default
 
     all_args = args + args_with_default.keys
