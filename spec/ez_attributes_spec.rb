@@ -30,9 +30,9 @@ RSpec.describe EzAttributes do
 
     it "requires keyword args" do
       expect { single_arg_class.new(1) }.to raise_error(
-        ArgumentError,
-        /wrong number of arguments \(given 1, expected 0; required keyword: :?a\)/
-      )
+                                              ArgumentError,
+                                              /wrong number of arguments \(given 1, expected 0; required keyword: :?a\)/
+                                            )
     end
   end
 
@@ -64,9 +64,9 @@ RSpec.describe EzAttributes do
 
     it "requires keyword args" do
       expect { multiple_arg_class.new(1, 2) }.to raise_error(
-        ArgumentError,
-        /wrong number of arguments \(given 2, expected 0; required keywords: a, b\)/
-      )
+                                                   ArgumentError,
+                                                   /wrong number of arguments \(given 2, expected 0; required keywords: a, b\)/
+                                                 )
     end
   end
 
@@ -135,6 +135,48 @@ RSpec.describe EzAttributes do
 
       expect(obj1.a).to eq [1, 1]
       expect(obj2.a).to eq [1]
+    end
+  end
+
+  context "when config is not present" do
+    let(:test_class) do
+      Class.new do
+        extend EzAttributes
+
+        attributes :test
+      end
+    end
+
+    it "defines getters" do
+      expect { test_class.new(test: "test").test }.not_to raise_error
+    end
+  end
+
+  context "when config is present and has getters: true" do
+    let(:test_class) do
+      Class.new do
+        extend EzAttributes.configure(getters: true)
+
+        attributes :test
+      end
+    end
+
+    it "defines getters" do
+      expect { test_class.new(test: "test").test }.not_to raise_error
+    end
+  end
+
+  context "when config is present and has getters: false" do
+    let(:test_class) do
+      Class.new do
+        extend EzAttributes.configure(getters: false)
+
+        attributes :test
+      end
+    end
+
+    it "does not define getters" do
+      expect { test_class.new(test: "test").test }.to raise_error NoMethodError
     end
   end
 end

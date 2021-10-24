@@ -58,6 +58,23 @@ user.name
 # => "Matz"
 ```
 
+### Configuration
+You can disable getters
+```ruby
+class User
+  extend EzAttributes.configure(getters: false)
+
+  attributes :name, :age, email: 'guest@user.com'
+end
+
+u = User.new(name: 'Matz', age: 22)
+# => #<User:0x000055bac152f130 @name="Matz", @age=22, @email="guest@user.com">
+
+u.name
+# NoMethodError (undefined method `name' for #<User:0x000055bac152f130>)
+
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
