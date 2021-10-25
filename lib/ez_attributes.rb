@@ -21,10 +21,10 @@ module EzAttributes
   EXCEPTIONS = [:class].freeze
 
   def self.extended(other)
-    other.extend configure(**default_args)
+    other.extend configure
   end
 
-  def self.configure(**opts)
+  def self.configure(getters: true)
     mod = Module.new
 
     mod.module_eval do
@@ -38,7 +38,7 @@ module EzAttributes
         private :__args_with_default
 
         all_args = args + args_with_default.keys
-        attr_reader(*(all_args - EXCEPTIONS)) if opts[:getters]
+        attr_reader(*(all_args - EXCEPTIONS)) if getters
 
         class_eval <<~RUBY, __FILE__, __LINE__ + 1
           def initialize(#{init_args})
@@ -54,9 +54,5 @@ module EzAttributes
     end
 
     mod
-  end
-
-  def self.default_args
-    {getters: true}
   end
 end
