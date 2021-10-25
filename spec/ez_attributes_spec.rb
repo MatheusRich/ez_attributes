@@ -137,4 +137,46 @@ RSpec.describe EzAttributes do
       expect(obj2.a).to eq [1]
     end
   end
+
+  context "when config is not present" do
+    let(:test_class) do
+      Class.new do
+        extend EzAttributes
+
+        attributes :test
+      end
+    end
+
+    it "defines getters" do
+      expect { test_class.new(test: "test").test }.not_to raise_error
+    end
+  end
+
+  context "when config is present and has getters: true" do
+    let(:test_class) do
+      Class.new do
+        extend EzAttributes.configure(getters: true)
+
+        attributes :test
+      end
+    end
+
+    it "defines getters" do
+      expect { test_class.new(test: "test").test }.not_to raise_error
+    end
+  end
+
+  context "when config is present and has getters: false" do
+    let(:test_class) do
+      Class.new do
+        extend EzAttributes.configure(getters: false)
+
+        attributes :test
+      end
+    end
+
+    it "does not define getters" do
+      expect { test_class.new(test: "test").test }.to raise_error NoMethodError
+    end
+  end
 end
