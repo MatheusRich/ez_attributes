@@ -48,8 +48,8 @@ module EzAttributes
       end
 
       # Defines a single keyword argument for a class initializer
-      define_method :attribute do |name|
-        attributes(name)
+      define_method :attribute do |*name, **name_with_default|
+        attributes(*name, **name_with_default)
       end
     end
 
