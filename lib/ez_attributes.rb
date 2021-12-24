@@ -49,7 +49,14 @@ module EzAttributes
 
       # Defines a single keyword argument for a class initializer
       define_method :attribute do |name|
-        attributes(name)
+        if name.is_a?(Hash)
+          arguments = name.size
+          raise ArgumentError, "wrong number of arguments (given #{arguments}, expected 1)" if arguments != 1
+
+          attributes(**name)
+        else
+          attributes(name)
+        end
       end
     end
 

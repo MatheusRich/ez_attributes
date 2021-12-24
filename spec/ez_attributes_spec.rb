@@ -36,6 +36,58 @@ RSpec.describe EzAttributes do
     end
   end
 
+  context "when class has a single argument with a default value" do
+    let(:single_arg_class) do
+      Class.new do
+        extend EzAttributes
+
+        attribute a: 33
+      end
+    end
+
+    it "adds an initializer with a keyword argument" do
+      obj = single_arg_class.new(a: 1)
+
+      expect(obj).to be_instance_of single_arg_class
+    end
+
+    it "adds an attribute accessor" do
+      obj = single_arg_class.new(a: 1)
+
+      expect(obj.a).to eq(1)
+    end
+
+    it "uses the default value" do
+      obj = single_arg_class.new
+
+      expect(obj.a).to eq(33)
+    end
+
+    it "requires keyword args" do
+      expect { single_arg_class.new(1) }.to raise_error(
+        ArgumentError,
+        /wrong number of arguments \(given 1, expected 0\)/
+      )
+    end
+  end
+
+  context "when class has a single argument with different of one default value" do
+    let(:single_arg_class) do
+      Class.new do
+        extend EzAttributes
+
+        attribute a: 33, b: 35
+      end
+    end
+
+    it "requires just one attribute" do
+      expect { single_arg_class.new(a: 1, b: 2) }.to raise_error(
+        ArgumentError,
+        /wrong number of arguments \(given 2, expected 1\)/
+      )
+    end
+  end
+
   context "when class has multiple arguments" do
     let(:multiple_arg_class) do
       Class.new do
