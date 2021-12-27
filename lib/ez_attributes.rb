@@ -25,9 +25,7 @@ module EzAttributes
   end
 
   def self.configure(getters: true)
-    mod = Module.new
-
-    mod.module_eval do
+    Module.new do
       # Defines multiple keyword arguments for a class initializer
       define_method :attributes do |*args, **args_with_default|
         required_args = args.map { |name| "#{name}:" }
@@ -40,17 +38,15 @@ module EzAttributes
         all_args = args + args_with_default.keys
         attr_reader(*(all_args - EXCEPTIONS)) if getters
 
-        class_eval <<~RUBY, __FILE__, __LINE__ + 1
+        class_eval <<~CODE, __FILE__, __LINE__ + 1
           def initialize(#{init_args})
             #{all_args.map { |name| "@#{name} = binding.local_variable_get(:#{name})" }.join("; ")}
           end
-        RUBY
+        CODE
       end
 
       # Defines a single keyword argument for a class initializer
       alias_method :attribute, :attributes
     end
-
-    mod
   end
 end
