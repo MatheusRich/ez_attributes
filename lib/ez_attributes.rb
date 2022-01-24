@@ -48,9 +48,7 @@ module EzAttributes
       end
 
       # Defines a single keyword argument for a class initializer
-      define_method :attribute do |name|
-        attributes(name)
-      end
+      alias_method :attribute, :attributes
     end
 
     mod
