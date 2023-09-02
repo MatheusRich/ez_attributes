@@ -46,7 +46,7 @@ Then, add the required and optional fields
 class User
   extend EzAttributes
 
-  # Here name and age are required, and email has a default value, so it is optional.
+  # Here, `name` and `age` are required, and `email` has a default value, so it is optional.
   attributes :name, :age, email: 'guest@user.com'
 end
 
@@ -74,7 +74,6 @@ u = User.new(name: 'Matz', age: 22)
 
 u.name
 # NoMethodError (undefined method `name' for #<User:0x000055bac152f130>)
-
 ```
 
 ## Development

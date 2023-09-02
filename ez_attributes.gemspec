@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description = "Easily define initializers with keyword args. It supports required and optional args."
   spec.homepage = "https://github.com/MatheusRich/ez_attributes.git"
   spec.license = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.5.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 3.0.0")
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
