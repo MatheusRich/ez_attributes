@@ -7,7 +7,6 @@ gemspec
 
 gem "rake", "~> 13.0.0"
 gem "standard"
-gem "solargraph"
 
 group :docs do
   gem "yard"
