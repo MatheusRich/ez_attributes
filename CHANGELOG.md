@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2025-05-23
+
+- Drop support for ruby <= 3.1
+- [BUGFIX] - Single attribute with default value breaking on Ruby 3 (#4)
+- Allow defining setters via configuration
+
+```ruby
+class User
+  extend EzAttributes.configure(setters: true)
+
+  attributes :name, :age, email: 'guest@user.com'
+end
+
+user = User.new(name: 'Matz', age: 22)
+user.name = 'Yukihiro Matsumoto'
+user.name
+# => "Yukihiro Matsumoto"
+```
+
 ## [0.3.0] - 2021-10-25
 
 <!-- ### Added -->
