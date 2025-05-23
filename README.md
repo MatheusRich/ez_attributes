@@ -76,6 +76,21 @@ u.name
 # NoMethodError (undefined method `name' for #<User:0x000055bac152f130>)
 ```
 
+You can enable setters:
+
+```ruby
+class User
+  extend EzAttributes.configure(setters: true)
+
+  attributes :name, :age, email: 'guest@user.com'
+end
+
+user = User.new(name: 'Matz', age: 22)
+user.name = 'Yukihiro Matsumoto'
+user.name
+# => "Yukihiro Matsumoto"
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run

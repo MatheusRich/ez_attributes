@@ -17,14 +17,14 @@ module EzAttributes
   # Gem version
   VERSION = "0.3.0"
 
-  # Attributes that won't have a getter to prevent conflicts with default methods
+  # Attributes that won't have a getter/setter to prevent conflicts with default methods
   EXCEPTIONS = [:class].freeze
 
   def self.extended(other)
     other.extend configure
   end
 
-  def self.configure(getters: true)
+  def self.configure(getters: true, setters: false)
     Module.new do
       # Defines multiple keyword arguments for a class initializer
       define_method :attributes do |*args, **args_with_default|
@@ -37,6 +37,7 @@ module EzAttributes
 
         all_args = args + args_with_default.keys
         attr_reader(*(all_args - EXCEPTIONS)) if getters
+        attr_writer(*(all_args - EXCEPTIONS)) if setters
 
         class_eval <<~CODE, __FILE__, __LINE__ + 1
           def initialize(#{init_args})

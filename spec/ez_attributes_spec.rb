@@ -150,6 +150,10 @@ RSpec.describe EzAttributes do
     it "defines getters" do
       expect { test_class.new(test: "test").test }.not_to raise_error
     end
+
+    it "defines doesn't define setters" do
+      expect { test_class.new(test: "test").test = "new_value" }.to raise_error NoMethodError
+    end
   end
 
   context "when config is present and has getters: true" do
@@ -162,7 +166,7 @@ RSpec.describe EzAttributes do
     end
 
     it "defines getters" do
-      expect { test_class.new(test: "test").test }.not_to raise_error
+      expect(test_class.new(test: "test").test).to eq "test"
     end
   end
 
@@ -177,6 +181,22 @@ RSpec.describe EzAttributes do
 
     it "does not define getters" do
       expect { test_class.new(test: "test").test }.to raise_error NoMethodError
+    end
+  end
+
+  context "when config is present and has setters: true" do
+    let(:test_class) do
+      Class.new do
+        extend EzAttributes.configure(setters: true)
+
+        attributes :test
+      end
+    end
+
+    it "defines setters" do
+      obj = test_class.new(test: "test")
+      expect { obj.test = "new_value" }.not_to raise_error
+      expect(obj.test).to eq "new_value"
     end
   end
 end
